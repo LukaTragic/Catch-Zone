@@ -6,7 +6,7 @@ from pybaseball.datahelpers.statcast_utils import add_spray_angle
 
 import pandas as pd
 import matplotlib.pyplot as plt
-from Functions.webScrape import getRoster
+from webScrape import getRoster
 pybaseball.cache.enable()
 
 

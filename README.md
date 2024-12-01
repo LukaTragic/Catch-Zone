@@ -15,6 +15,10 @@ I want to catch a baseball at a baseball game. Where should I sit?
 - Talked to David to figure out calculations
 - found velocity and spin values in each direction
 
+12/1
+
+- finished successfully calculating velocity and accleration of each direction
+
 TO DO:
 
 - be able to iterate by a discrete time step and find all relevant values
