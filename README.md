@@ -19,7 +19,12 @@ I want to catch a baseball at a baseball game. Where should I sit?
 
 - finished successfully calculating velocity and accleration of each direction
 
+12/3
+
+- able to iterate and find trajectory of a given row in the database
+- able to simulate it for each time step
+
 TO DO:
 
-- be able to iterate by a discrete time step and find all relevant values
-- find final positions of trajectory
+- figure out classifications for each section
+- make function that tests when trajectories intersect with those boundaries

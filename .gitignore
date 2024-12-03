@@ -1,4 +1,5 @@
 venv/
 __pycache__/
-test.ipynb
+Functions/test.ipynb
 Functions/__pycache__/
+.vscode/
