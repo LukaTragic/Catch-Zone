@@ -10,7 +10,6 @@ def get_Coordinate_Spin(omega_b, omega_s, omega_g, phi, theta):
     omega_x = omega_b*math.cos(phi) - omega_s*math.sin(theta)*math.sin(phi) + omega_g*math.cos(theta)*math.sin(phi)
     omega_y = -omega_b*math.sin(phi) - omega_s*math.sin(theta)*math.cos(phi) + omega_g*math.cos(theta)*math.cos(phi)
     omega_z = omega_s*math.cos(theta) + omega_g*math.sin(theta)
-
     return [omega_x, omega_y, omega_z]
 
 def get_Velocities(v_t, theta, phi):
@@ -19,6 +18,15 @@ def get_Velocities(v_t, theta, phi):
     v_z = v_t * math.sin(theta)
 
     return [v_x, v_y, v_z]
+
+def get_AirDensity(idealConditions):
+    [temp, pressure, elev, humidity] = idealConditions # [deg F, in Hg, ft, %]
+    tempC = (5/9) * (temp-32)
+    elevm = elev/3.2808
+    SVP = 4.5841*(math.e**((18.687-(tempC/234.5))*tempC/(257.14+tempC)))
+    barPressure = pressure * 1000/39.37
+    rho = 1.2929*(273/(tempC+273)*(barPressure*math.e**(-0.0001217*elevm)-0.3783*humidity*SVP/100)/760)
+    return rho
 
 def get_Constant(rho, A, m):
     return (rho * A) / (2 * m)
@@ -48,8 +56,9 @@ def get_aMag(K, cl, v_t, v_x, v_y, v_z, omega, omega_x, omega_y, omega_z, g):
     return [aMag_x, aMag_y, aMag_z]
 
 
-def calculateValues(rho, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g):
+def calculateValues(idealConditions, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g):
 
+    rho = get_AirDensity(idealConditions)
     radius = C / (2*math.pi) * 0.0254
     area = math.pi * (radius**2)
 

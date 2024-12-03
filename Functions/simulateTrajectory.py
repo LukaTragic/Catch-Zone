@@ -2,10 +2,10 @@ import math
 from trajectoryCalculate import *
 from dataCollecting import *
 
-def simulateTrajectory(positions, t, rho, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g, dt, Tau):
+def simulateTrajectory(positions, t, idealConditions, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g, dt, Tau):
     # Step 1: Calculate initial values
     [Konst, radius, spin_t, coordSpins, coordVelocities, accelerations, coeff] = calculateValues(
-        rho, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g
+        idealConditions, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g
     )
 
     trajectory = {}  # Store trajectory data
@@ -19,13 +19,13 @@ def simulateTrajectory(positions, t, rho, C, m, omega_b, omega_g, theta, phi, ph
         [t, positions, coordVelocities, coeff, accelerations] = iterateValues(
             dt, t, Tau, Konst, radius, positions, spin_t, coordSpins, coordVelocities, accelerations, coeff, g
         )
-
+        
     return trajectory
 
 def simulateRow(row):
     positions = [0, 0.6096, 0.9144] # m
     t = 0 # s    
-    rho = 1.194 # kg/m**3
+    idealConditions = [70, 29.92, 15, 50] # [deg F, in Hg, ft, %]
     C = 9.136 # in
     m = 0.14529131 # kg
     omega_b = float(row[['release_spin_rate']].iloc[0]) # rpm
@@ -38,8 +38,5 @@ def simulateRow(row):
     dt = 0.01 # s
     Tau = 30 # s
 
-    return simulateTrajectory(positions, t, rho, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g, dt, Tau)
+    return simulateTrajectory(positions, t, idealConditions, C, m, omega_b, omega_g, theta, phi, phi_s, v_t, g, dt, Tau)
 
-row1 = getTeamHomeRuns("NYY").head(1)
-
-print(simulateRow(row1)[4.6])
