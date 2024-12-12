@@ -24,6 +24,11 @@ I want to catch a baseball at a baseball game. Where should I sit?
 - able to iterate and find trajectory of a given row in the database
 - able to simulate it for each time step
 
+12/12
+
+- fixed trajectory
+- refactored and reorganized a bunch of code
+
 TO DO:
 
 - figure out classifications for each section
