@@ -12,12 +12,13 @@ from .web_scraper import *
 
 pybaseball.cache.enable()
 
-def get_team_home_runs(curr_team: str, current: bool = True) -> pd.DataFrame:
+def get_team_hits(curr_team: str, current: bool = True, event: str = None) -> pd.DataFrame:
     """
     Collect home run data for a specific team's roster.
     
     Args:
         curr_team (str): Team acronym
+        event (str): Type of event to look for
         current (bool): If current roster should be used
 
         
@@ -43,11 +44,12 @@ def get_team_home_runs(curr_team: str, current: bool = True) -> pd.DataFrame:
 
     team_at_bat = pd.concat(dataframes, ignore_index=True)
 
-    # Filter for home runs
-    team_home_runs = team_at_bat.loc[team_at_bat['events'] == 'home_run']
+    # Filter for event
+    if event:
+        team_at_bat = team_at_bat.loc[team_at_bat['events'] == event]
 
     # Add spray angle
-    team_home_run_angles = add_spray_angle(team_home_runs)
+    team_filtered_angles = add_spray_angle(team_at_bat)
 
     # Drop deprecated columns
     columns_to_drop = [
@@ -55,6 +57,6 @@ def get_team_home_runs(curr_team: str, current: bool = True) -> pd.DataFrame:
         'tfs_deprecated', 'tfs_zulu_deprecated'
     ]
 
-    team_home_runs_clean = team_home_run_angles.drop(columns_to_drop, axis=1)
+    team_filtered_clean = team_filtered_angles.drop(columns_to_drop, axis=1)
 
-    return team_home_runs_clean
+    return team_filtered_clean

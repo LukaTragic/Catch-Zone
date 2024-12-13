@@ -29,7 +29,14 @@ I want to catch a baseball at a baseball game. Where should I sit?
 - fixed trajectory
 - refactored and reorganized a bunch of code
 
+12/13
+
+- reorganized some things
+- begining to outline machine learning model
+- tested correlation of the variables I am trying to predict, looks promising
+
 TO DO:
 
+- conduct VIF to determine what features will cause redundacies in each of the dependent variables
 - figure out classifications for each section
 - make function that tests when trajectories intersect with those boundaries
