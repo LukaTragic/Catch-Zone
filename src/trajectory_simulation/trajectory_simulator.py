@@ -38,7 +38,13 @@ def simulate(
 
     while positions[2] >= 0:
         trajectory[round(t,4)] = [positions, coord_velos, accelerations]
+
+        if positions[2] < 1.0:
+            dt = max(0.001, dt*0.5)
+
         [t, positions, coord_velos, coeff, accelerations] = iterate_values(K, coeff, radius, omega_t, coord_spins, coord_velos, accelerations, positions, g, t, dt, Tau)
+
+
 
     return trajectory
 
@@ -61,7 +67,7 @@ def simulate_row(row: List[float]):
     theta = float(row[['launch_angle']].iloc[0]) # deg
     phi = float(row[['spray_angle']].iloc[0]) # deg
     phi_s = float(row[['spin_axis']].iloc[0]) # deg
-    positions = [0, 0.6096, 0.9144] # m
+    positions = [float(row[['plate_x']].iloc[0]), 0.609, float(row[['plate_z']].iloc[0])] # m
     C = 9.125 # in
     m = 5.125 # oz
     default_conditions = [70, 29.92, 15, 50] # [deg F, inHg, ft, %]

@@ -12,12 +12,12 @@ from .web_scraper import *
 
 pybaseball.cache.enable()
 
-def get_team_hits(curr_team: str, current: bool = True, event: str = None) -> pd.DataFrame:
+def get_team_hits(team_roster: dict, current: bool = True, event: str = None) -> pd.DataFrame:
     """
     Collect home run data for a specific team's roster.
     
     Args:
-        curr_team (str): Team acronym
+        team_roster (dict): Team roster
         event (str): Type of event to look for
         current (bool): If current roster should be used
 
@@ -26,7 +26,6 @@ def get_team_hits(curr_team: str, current: bool = True, event: str = None) -> pd
         pd.DataFrame: Cleaned home run data
     """
     # Get team roster
-    team_roster = get_roster(curr_team, current)
     team_roster_ids = list(team_roster.keys())
 
     # Collect data for each player

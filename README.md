@@ -35,8 +35,41 @@ I want to catch a baseball at a baseball game. Where should I sit?
 - begining to outline machine learning model
 - tested correlation of the variables I am trying to predict, looks promising
 
+12/14
+
+- using correlation matrix to test if input variables of our simulation are correlated or not. They are not correlated with each other.
+- used one way Anova test to determine if player stats are statistically significant enough to each other, they seem to be, suggestive of clustering
+
+12/19
+
+- FIGURED OUT HOW I AM GOING TO DO THINGS
+  Project Workflow:
+  GIVEN AN UPCOMING GAME, WHERE DO I SIT?#
+
+**Data Collection and Preprocessing**
+
+- Collect data on batters, pitchers, and hit level data and store and organize into databases
+- Calculate temporal weights for each appearance/event
+
+**Feature Engineering**
+
+- Create rolling averages for key metrics
+- Build temporally weighted player statistics
+
+**Model Development**
+
+- Goal here is to predict how the opposing team will pitch, then using the pitch data, we will predict how a batter will hit the ball
+- Perhaps we can cluster out the types of pitches this team does and weight how likely they are to occur. Then we predict how the Yankees will react to pitches like those. Then we are able to use that to predict values.
+- Split the data temporally
+- Train and Cross Validate model on predictions
+- Tune hyperparamters
+
+**Simulate**
+
+- Once we are able to predict how a batter will hit the ball, we will run all such values through our simulation.
+- We will scrape the weather prediction of the date and also input that into our simulation.
+- We will end up with a list of coordinates and their associated probability (based on how likely it is to be pitched/responded to) and create a heat map to show where the ball will land
+
 TO DO:
 
-- conduct VIF to determine what features will cause redundacies in each of the dependent variables
-- figure out classifications for each section
-- make function that tests when trajectories intersect with those boundaries
+- ALL OF THE ABOVE
