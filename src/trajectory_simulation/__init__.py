@@ -12,3 +12,8 @@ from . import trajectory_simulator
 importlib.reload(trajectory_simulator)
 from .trajectory_simulator import *
 
+from . import classify_trajectory
+importlib.reload(classify_trajectory)
+from .classify_trajectory import *
+
+

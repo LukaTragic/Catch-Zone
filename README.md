@@ -70,6 +70,17 @@ I want to catch a baseball at a baseball game. Where should I sit?
 - We will scrape the weather prediction of the date and also input that into our simulation.
 - We will end up with a list of coordinates and their associated probability (based on how likely it is to be pitched/responded to) and create a heat map to show where the ball will land
 
+12/25
+
+- Merry Christmas
+- Adjusted A LOT OF THINGS ABOUT THE METHOD AND EVERYTHING
+- found team pitch distribution
+- added player weights
+
 TO DO:
+
+- pick and run model
+- classify home runs and integrate into main data frame
+- hitter weight classification
 
 - ALL OF THE ABOVE

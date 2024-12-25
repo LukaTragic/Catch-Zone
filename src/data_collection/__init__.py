@@ -8,4 +8,6 @@ from . import statcast_data
 importlib.reload(statcast_data)
 from .statcast_data import *
 
-
+from . import ingestion
+importlib.reload(ingestion)
+from .ingestion import *

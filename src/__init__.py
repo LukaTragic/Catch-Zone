@@ -8,10 +8,10 @@ from . import data_collection
 importlib.reload(data_collection)
 from .data_collection import *
 
-from . import data_ingestion
-importlib.reload(data_ingestion)
-from .data_ingestion import *
+from . import feature_engineering
+importlib.reload(feature_engineering)
+from .feature_engineering import *
 
-from . import machine_learning
-importlib.reload(machine_learning)
-from .machine_learning import *
+from . import util
+importlib.reload(util)
+from .util import *

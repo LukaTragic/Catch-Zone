@@ -1,4 +1,3 @@
-import math
 from typing import List
 import importlib
 
@@ -59,7 +58,6 @@ def simulate_row(row: List[float]):
     Returns:
         Dict[float] = [float, List[float], List[float], List[float]]: [time] (s) = [positions (m), component velocities (m/s), component accelerations (m/s^2)]
     """
-
 
     t = 0 # s
     omega_t = float(row[['release_spin_rate']].iloc[0]) # rpm
