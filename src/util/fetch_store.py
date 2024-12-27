@@ -26,11 +26,11 @@ def fetch_store_team_data(team_code: str, webscrape_id: int, db_name: str, type:
 
     con = sqlite3.connect(db_name)
     roster = get_roster(team_code, webscrape_id)
-    hr_hits = 0
 
     if type == 'hits':
         hits = get_team_hits(roster)
         store(hits, db_name, f"{team_code.lower()}_hits")
+        hr_hits = pd.read_sql_query(f"SELECT * FROM {team_code.lower()}_hits WHERE events = 'home_run'", con)
         con.close()
         return roster, hits, hr_hits
 
