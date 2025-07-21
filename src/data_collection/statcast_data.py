@@ -5,12 +5,14 @@ from pybaseball.datahelpers.statcast_utils import add_spray_angle
 import pandas as pd
 from typing import List, Dict
 import importlib
+from datetime import date
 
 from . import web_scraper
 importlib.reload(web_scraper)
 from .web_scraper import *
 
 pybaseball.cache.enable()
+today = date.today()
 
 def get_team_hits(team_roster: Dict) -> pd.DataFrame:
     """
@@ -28,7 +30,7 @@ def get_team_hits(team_roster: Dict) -> pd.DataFrame:
     dataframes: List[pd.DataFrame] = []
     for player_id in team_roster_ids:
         try:
-            temp_df = statcast_batter('2024-02-22', '2024-10-30', player_id)
+            temp_df = statcast_batter('2008-04-01', today.strftime("%Y-%m-%d"), player_id)
             dataframes.append(temp_df)
         except Exception as e:
             print(f"Error collecting data for player {player_id}: {e}")
@@ -52,6 +54,8 @@ def get_team_hits(team_roster: Dict) -> pd.DataFrame:
 
     return team_filtered_clean
 
+
+'''
 def get_team_pitches(team_roster: dict) -> pd.DataFrame:
     """
     Collect hit data for a specific team's roster.
@@ -90,3 +94,4 @@ def get_team_pitches(team_roster: dict) -> pd.DataFrame:
     team_filtered_clean = team_filtered_angles.drop(columns_to_drop, axis=1)
 
     return team_filtered_clean
+'''

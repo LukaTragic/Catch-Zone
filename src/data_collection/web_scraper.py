@@ -26,7 +26,7 @@ POISTION_DICT = {
     "CF": "Center Fielder", "RF": "Right Fielder", "DH": "Designated Hitter", "CL": "Closer"
 }
 
-def get_roster(team_acronym: str, current: int) -> Dict[int, str]:
+def get_roster(team_acronym: str) -> Dict[int, str]:
     """
     Retrieve MLB team roster from optional website.
     
@@ -36,14 +36,8 @@ def get_roster(team_acronym: str, current: int) -> Dict[int, str]:
     Returns:
         Dict[int, str]: Dictionary of player IDs and names
     """
-    # default value is 2024 Yankees        
-    if current == 0:
-        url = f"https://www.mlb.com/{TEAM_DICT[team_acronym]}/roster/40-man"    
-    elif current == 1:
-        url = "https://web.archive.org/web/20241007121158/https://www.mlb.com/yankees/roster/40-man"
-    elif current == 2:
-        url = "https://web.archive.org/web/20241007091344/https://www.mlb.com/dodgers/roster/40-man"
-
+    url = f"https://www.mlb.com/{TEAM_DICT[team_acronym]}/roster"    
+    
     try:
         response = requests.get(url)
         response.raise_for_status()  # Raise an exception for bad status codes
@@ -69,6 +63,10 @@ def get_roster(team_acronym: str, current: int) -> Dict[int, str]:
         print(f"Error fetching roster: {e}")
         return {}
     
+
+
+
+'''
 def get_roster_depth_chart(team_acronym: str, current: int) -> Dict[str, str]:
     """
     Retrieve MLB team roster from optional website.
@@ -127,3 +125,6 @@ def get_roster_depth_chart(team_acronym: str, current: int) -> Dict[str, str]:
     except requests.RequestException as e:
         print(f"Error fetching roster: {e}")
         return {}
+
+
+'''

@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import Dict
 
+'''
 def calculate_appearance_weights(team_roster: Dict, pitches: pd.DataFrame, game_date: str):
     """
     Given a date, calculate the percentage of pitches each player on the roster was present at.
@@ -33,8 +34,9 @@ def calculate_appearance_weights(team_roster: Dict, pitches: pd.DataFrame, game_
         pitch_weights[pitcher_name] = pitch_probability
 
     return pitch_weights
+'''
 
-
+'''
 def calculate_total_weights(team_roster: Dict, roster_positions: Dict, pitches: pd.DataFrame, game_date: str):    
     """
     Calculate weights based on position and appearence
@@ -89,4 +91,4 @@ def calculate_total_weights(team_roster: Dict, roster_positions: Dict, pitches: 
         combined_weights[pitcher] /= total_weight
 
     return combined_weights
-
+'''

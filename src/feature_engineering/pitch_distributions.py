@@ -1,5 +1,7 @@
 import pandas as pd
 
+
+'''
 def get_team_pitch_statistics(df: pd.DataFrame):
     """
     Calculate team-level pitch type distributions and characteristics from a DataFrame.
@@ -73,7 +75,9 @@ def get_team_pitch_statistics(df: pd.DataFrame):
     grouped = grouped.sort_values(by='count', ascending=False)
 
     return grouped
+'''
 
+'''
 def get_player_pitch_statistics(df: pd.DataFrame):
     """
     Calculate player-level pitch type distributions and characteristics from a DataFrame.
@@ -147,3 +151,4 @@ def get_player_pitch_statistics(df: pd.DataFrame):
     grouped = grouped.sort_values(by='player_name', ascending=False)
 
     return grouped
+'''

@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from typing import Dict
 
+'''
 def calculate_pitch_stats(pitcher_weights: Dict[str, float], player_pitches: pd.DataFrame) -> pd.DataFrame:
     """
     Calculate pitch statistics weighted by pitcher appearance probabilities using pre-aggregated pitcher stats.
@@ -161,3 +162,4 @@ def calculate_pitch_stats(pitcher_weights: Dict[str, float], player_pitches: pd.
     result_df = result_df.sort_values('overall_likelihood', ascending=False)
 
     return result_df.round(4)
+'''
